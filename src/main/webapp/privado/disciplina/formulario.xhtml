@@ -195,7 +195,7 @@
                 <p:selectOneMenu id="selectAluno2" value="#{controleDisciplina.nota.aluno}">
                     <f:converter binding="#{converterAluno}"/>
                     <f:selectItem itemLabel="Selecione um registro" noSelectionOption="true"/>
-                    <f:selectItems value="#{controleDisciplina.objeto.alunos}"
+                    <f:selectItems value="#{controleDisciplina.daoAluno.listaTodos}"
                                    var="a" itemLabel="#{a.nome}"/>                    
                 </p:selectOneMenu>
             </p:panelGrid>
