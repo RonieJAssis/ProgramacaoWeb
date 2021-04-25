@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SubNotas" pageWidth="535" pageHeight="842" columnWidth="535" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="48088116-8e64-4c17-add7-662fed1cd165">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="nota1" class="java.lang.Double">
+		<fieldDescription><![CDATA[nota1]]></fieldDescription>
+	</field>
+	<field name="aluno" class="br.edu.ifsul.modelo.Aluno">
+		<fieldDescription><![CDATA[aluno]]></fieldDescription>
+	</field>
+	<field name="nota2" class="java.lang.Double">
+		<fieldDescription><![CDATA[nota2]]></fieldDescription>
+	</field>
+	<field name="disciplina" class="br.edu.ifsul.modelo.Disciplina">
+		<fieldDescription><![CDATA[disciplina]]></fieldDescription>
+	</field>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[id]]></fieldDescription>
+	</field>
+	<field name="media" class="java.lang.Double">
+		<fieldDescription><![CDATA[media]]></fieldDescription>
+	</field>
+	<pageHeader>
+		<band height="43" splitType="Stretch">
+			<rectangle>
+				<reportElement positionType="Float" stretchType="ElementGroupHeight" x="0" y="0" width="495" height="43" backcolor="#FAF88C" uuid="63aaa0b1-dedc-4f0c-be45-69c396cd33e5"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="13" width="130" height="30" uuid="ec42343b-3caa-4173-a074-6bba8f1002a7"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Aluno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="340" y="11" width="50" height="30" uuid="e70e2b95-4062-4464-a4e8-cb5fbcb10d19"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Nota 1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="11" width="50" height="30" uuid="47aa6c55-866f-4ebb-8643-47472eb5e854"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Nota 2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="440" y="11" width="50" height="30" uuid="ca720482-e201-4179-b1eb-422f9b4c447c"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Media]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="40" splitType="Stretch">
+			<rectangle>
+				<reportElement positionType="Float" stretchType="ElementGroupHeight" x="0" y="0" width="495" height="40" uuid="7e94ab4e-33c9-4e39-b948-f2c386805c46"/>
+			</rectangle>
+			<textField>
+				<reportElement x="0" y="0" width="130" height="30" uuid="e88e82c7-ceb3-4293-8f0c-21512d4ba4f7"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{aluno}.getNome()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="340" y="0" width="50" height="30" uuid="f8e5a258-526d-4860-ad40-257d416351e3"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nota1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="0" width="50" height="30" uuid="06521bcf-2471-4774-a580-f5f4a2bce4f9"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nota2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="0" width="50" height="30" uuid="84afff26-0fcc-4bce-97f4-2bebd3dbf160"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{media}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

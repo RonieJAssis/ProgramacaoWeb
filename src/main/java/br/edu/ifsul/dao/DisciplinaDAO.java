@@ -8,6 +8,7 @@ package br.edu.ifsul.dao;
 import br.edu.ifsul.converter.ConverterOrdem;
 import br.edu.ifsul.modelo.Disciplina;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.Stateful;
 
 /**
@@ -25,4 +26,16 @@ public class DisciplinaDAO<TIPO> extends DAOGenerico<Disciplina> implements Seri
         converterOrdem = new ConverterOrdem();
         converterOrdem.setListaOrderm(listaOrdem);  
     }
+    @Override
+    public Disciplina getObjectByID(Object id) throws Exception {
+        Disciplina obj = em.find(Disciplina.class, id);
+        obj.getNotas().size();
+        obj.getAlunos().size();
+        return obj;
+    }   
+    
+    public List<Disciplina> getListaObjetosCompleta(){
+        String jpql = "select distinct d from Disciplina d join fetch d.notas order by d.id";
+        return em.createQuery(jpql).getResultList();
+    }    
 }

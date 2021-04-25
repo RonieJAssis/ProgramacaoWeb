@@ -86,15 +86,12 @@
                                  id="listaNotas">
                         <f:facet name="header">
                             <p:commandButton value="Nova Nota"
-                                             actionListener="#{controleDisciplina.novoNota()}"
+                                             actionListener="#{controleDisciplina.novaNota()}"
                                              update=":formNota"
                                              icon="pi pi-plus"
                                              process="@this"
                                              oncomplete="PF('dlgNota').show();"/>
                         </f:facet>
-                        <p:column headerText="ID">
-                            <p:outputLabel value="#{nota.id}"/>
-                        </p:column>
                         <p:column headerText="Aluno">
                             <p:outputLabel value="#{nota.aluno.nome}"/>
                         </p:column>

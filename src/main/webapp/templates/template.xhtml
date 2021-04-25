@@ -18,18 +18,27 @@
                         <p:submenu label="Basicos">
                             <p:menuitem action="#{controleEspecialidade.listar()}" value="Manutencao de Especialidade" ajax="false"/>
                             <p:menuitem action="#{controleAluno.listar()}" value="Manutencao de Aluno" ajax="false"/>
-                            <p:menuitem action="#{controleProfessor.listar()}" value="Manutencao de Professor" ajax="false"/>
-                            <p:menuitem action="#{controleInstituicao.listar()}" value="Manutencao de Instituicao" ajax="false"/>                    
+                            <p:menuitem action="#{controleProfessor.listar()}" value="Manutencao de Professor" ajax="false"/>                    
                         </p:submenu>
                         <p:submenu label="Cursos">
-                            <p:menuitem action="#{controleDisciplina.listar()}" value="Manutencao de Disciplina" ajax="false"/>              
+                            <p:menuitem action="#{controleDisciplina.listar()}" value="Manutencao de Disciplina" ajax="false"/>
+                            <p:menuitem action="#{controleInstituicao.listar()}" value="Manutencao de Instituicao" ajax="false"/>
+                        </p:submenu>
+                    </p:column>
+                </p:submenu>
+                <p:submenu label="Relatórios">
+                    <p:column>
+                        <p:submenu label="Basicos">           
+                        </p:submenu>
+                        <p:submenu label="Cursos">
+                            <p:menuitem action="#{controleDisciplina.imprimeDisciplinas()}" value="Imprimir Disciplinas" ajax="false" target = "_blank"/>              
                         </p:submenu>
                     </p:column>
                 </p:submenu>
             </p:megaMenu>
         </h:form>
         <ui:insert name="conteudo">
-            
+
         </ui:insert>
         <ui:include src="ajaxstatus.xhtml"/>
     </h:body>
