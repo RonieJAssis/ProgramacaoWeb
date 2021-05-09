@@ -9,6 +9,7 @@ import br.edu.ifsul.converter.ConverterOrdem;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -109,15 +110,15 @@ public class DAOGenerico<TIPO> implements Serializable {
                 + " order by " + ordemAtual.getAtributo();
         return em.createQuery(jpql).getResultList();
     }
-
+    @RolesAllowed("INSERCAO")
     public void persist(TIPO obj) throws Exception {
         em.persist(obj);
     }
-
+    @RolesAllowed("ALTERACAO")
     public void merge(TIPO obj) throws Exception {
         em.merge(obj);
     }
-
+    @RolesAllowed("EXCLUSAO")
     public void remove(TIPO obj) throws Exception {
         obj = em.merge(obj);
         em.remove(obj);

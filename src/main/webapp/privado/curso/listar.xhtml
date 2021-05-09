@@ -15,6 +15,7 @@
                                  icon="pi pi-plus"
                                  update="formEdicao"
                                  process="@this"
+                                 rendered="#{p:ifGranted('INSERCAO')}"
                                  oncomplete="PF('dlg').show();"/>
                 <div align="center">
                     <p:panelGrid columns="11">
@@ -65,9 +66,6 @@
                     <p:column headerText="Instituição">
                         <p:outputLabel value="#{obj.instituicao.nome}"/>
                     </p:column>
-                    <p:column headerText="Descrição">
-                        <p:inputTextarea cols="20" value="#{obj.descricao}"/>
-                    </p:column>
                     <p:column headerText="Ações">
                         <div align="center">
                             <p:commandButton actionListener="#{controleCurso.alterar(obj.id)}"
@@ -75,11 +73,13 @@
                                              title="Editar"
                                              update="formEdicao"
                                              process="@this"
+                                             rendered="#{p:ifGranted('ALTERACAO')}"
                                              oncomplete="PF('dlg').show();"/>
                             <p:commandButton actionListener="#{controleCurso.excluir(obj.id)}"
                                              icon="pi pi-trash"
                                              update="@form"
                                              process="@this"
+                                             rendered="#{p:ifGranted('EXCLUSAO')}"
                                              onclick="if (!confirm('Confirma a exclusão'))
                                                          return false"/>
                         </div>

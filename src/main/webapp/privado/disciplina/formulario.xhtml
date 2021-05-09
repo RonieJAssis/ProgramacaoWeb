@@ -56,6 +56,7 @@
                                              update=":formAluno"
                                              icon="pi pi-plus"
                                              process="@this"
+                                             rendered="#{p:ifGranted('INSERCAO')}"
                                              oncomplete="PF('dlgAluno').show();"/>
                         </f:facet>
                         <p:column headerText="ID">
@@ -74,6 +75,7 @@
                                     icon="pi pi-trash"
                                     update="tab:listaAlunos growl"
                                     process="@this"
+                                    rendered="#{p:ifGranted('EXCLUSAO')}"
                                     onclick="if (!confirm('Confirma a exclusão'))
                                                 return false"/>
                             </div>
@@ -90,6 +92,7 @@
                                              update=":formNota"
                                              icon="pi pi-plus"
                                              process="@this"
+                                             rendered="#{p:ifGranted('INSERCAO')}"
                                              oncomplete="PF('dlgNota').show();"/>
                         </f:facet>
                         <p:column headerText="Aluno">
@@ -112,12 +115,14 @@
                                     title="Editar"
                                     update=":formNota"
                                     process="@this"
+                                    rendered="#{p:ifGranted('ALTERACAO')}"
                                     oncomplete="PF('dlgNota').show();"/>
                                 <p:commandButton 
                                     actionListener="#{controleDisciplina.removerNota(idxNota)}"
                                     icon="pi pi-trash"
                                     update="tab:listaNotas growl"
                                     process="@this"
+                                    rendered="#{p:ifGranted('EXCLUSAO')}"
                                     onclick="if (!confirm('Confirma a exclusão'))
                                                 return false"/>
                             </div>

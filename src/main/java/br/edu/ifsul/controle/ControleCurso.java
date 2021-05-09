@@ -32,26 +32,20 @@ public class ControleCurso implements Serializable {
     private Curso objeto;
     @EJB
     private InstituicaoDAO<Instituicao> daoInstituicao;
-    @EJB
-    private AlunoDAO<Aluno> daoAluno;
     private Disciplina disciplina;
     private boolean novadisciplina;
-    private Aluno aluno;
-    private Nota nota;
-    private boolean novanota;
-
     public ControleCurso() {
 
     }
 
     public void novaDisciplina() {
-        disciplina = new Disciplina();
-        novadisciplina = true;
+        setDisciplina(new Disciplina());
+        setNovadisciplina(true);
     }
 
     public void alterarDisciplina(int index) {
-        disciplina = objeto.getDisciplinas().get(index);
-        novadisciplina = false;
+        setDisciplina(objeto.getDisciplinas().get(index));
+        setNovadisciplina(false);
     }
 
     public void salvarDisciplina() {
@@ -63,36 +57,6 @@ public class ControleCurso implements Serializable {
 
     public void removerDisciplina(int index) {
         objeto.removerDisciplina(index);
-    }
-
-    public void novoAluno() {
-        aluno = new Aluno();
-    }
-
-    public void salvarAluno() {
-        disciplina.addAlunos(aluno);
-        Util.mensagemInformacao("aluno adicionado com sucesso!");
-    }
-
-    public void removerAluno(int index) {
-        disciplina.removerAluno(index);
-    }
-
-    public void novaNota() {
-        nota = new Nota();
-        novanota = true;
-    }
-
-    public void alterarNota(int index) {
-        nota = disciplina.getNotas().get(index);
-        novanota = false;
-    }
-
-    public void salvarNota() {
-        if (novanota) {
-            disciplina.addNotas(nota);
-        }
-        Util.mensagemInformacao("nota adicionada ou alterada com sucesso!");
     }
 
     public void removerNota(int index) {

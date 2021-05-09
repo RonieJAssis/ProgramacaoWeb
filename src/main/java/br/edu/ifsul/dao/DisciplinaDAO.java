@@ -7,6 +7,7 @@ package br.edu.ifsul.dao;
 
 import br.edu.ifsul.converter.ConverterOrdem;
 import br.edu.ifsul.modelo.Disciplina;
+import br.edu.ifsul.util.Util;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.Stateful;
@@ -36,6 +37,13 @@ public class DisciplinaDAO<TIPO> extends DAOGenerico<Disciplina> implements Seri
     
     public List<Disciplina> getListaObjetosCompleta(){
         String jpql = "select distinct d from Disciplina d join fetch d.notas order by d.id";
-        return em.createQuery(jpql).getResultList();
-    }    
+        List<Disciplina> lista = em.createQuery(jpql).getResultList();
+        System.out.println(lista.size());
+        return lista;
+    }
+    
+    public void remover(Disciplina obj) throws Exception {
+        obj = em.find(Disciplina.class, obj.getId());
+        em.remove(obj);
+    } 
 }

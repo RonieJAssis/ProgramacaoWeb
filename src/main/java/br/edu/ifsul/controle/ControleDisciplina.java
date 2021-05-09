@@ -74,6 +74,7 @@ public class ControleDisciplina implements Serializable {
 
     public void removerAluno(int index) {
         objeto.removerAluno(index);
+        Util.mensagemInformacao("aluno removido com sucesso!");
     }
 
     public void novaNota() {
@@ -115,8 +116,10 @@ public class ControleDisciplina implements Serializable {
 
     public void excluir(Object id) {
         try {
+            
             objeto = dao.getObjectByID(id);
-            dao.remove(objeto);
+            System.out.println(objeto.getNome());
+            dao.remover(objeto);
             Util.mensagemInformacao("Objeto removido com sucesso!");
         } catch (Exception e) {
             Util.mensagemInformacao("Erro ao remover objeto: " + Util.getMensagemErro(e));

@@ -15,6 +15,7 @@
                                  icon="pi pi-plus"
                                  update="formEdicao"
                                  process="@this"
+                                 rendered="#{p:ifGranted('INSERCAO')}"
                                  oncomplete="PF('dlg').show();"/>
                 <div align="center">
                     <p:panelGrid columns="11">
@@ -69,11 +70,13 @@
                                              title="Editar"
                                              update="formEdicao"
                                              process="@this"
+                                             rendered="#{p:ifGranted('ALTERACAO')}"
                                              oncomplete="PF('dlg').show();"/>
                             <p:commandButton actionListener="#{controleAluno.excluir(obj.id)}"
                                              icon="pi pi-trash"
                                              update="@form"
                                              process="@this"
+                                             rendered="#{p:ifGranted('EXCLUSAO')}"
                                              onclick="if (!confirm('Confirma a exclusão'))
                                                          return false"/>
                         </div>

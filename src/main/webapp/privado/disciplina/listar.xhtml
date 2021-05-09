@@ -15,6 +15,7 @@
                                  icon="pi pi-plus"
                                  update="formEdicao"
                                  process="@this"
+                                 rendered="#{p:ifGranted('INSERCAO')}"
                                  oncomplete="PF('dlg').show();"/>
                 <p:commandButton value="Imprimir"
                                  action="#{controleDisciplina.imprimeDisciplinas()}"
@@ -26,7 +27,7 @@
                         <p:outputLabel value="Ordem:"/>
                         <p:selectOneMenu value="#{controleDisciplina.dao.ordemAtual}" converter="#{controleDisciplina.dao.converterOrdem}">
                             <f:selectItems value="#{controleDisciplina.dao.listaOrdem}" var="ord" itemValue="#{ord.atributo}"/>
-                                <p:ajax update="listagem"/>
+                            <p:ajax update="listagem"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="Filtro:"/>
                         <p:inputText value="#{controleDisciplina.dao.filtro}">
@@ -72,18 +73,16 @@
                                              title="Editar"
                                              update="formEdicao"
                                              process="@this"
+                                             rendered="#{p:ifGranted('ALTERACAO')}"
                                              oncomplete="PF('dlg').show();"/>
-                            <p:commandButton actionListener="#{controleDisciplina.excluir(obj.id)}"
-                                             icon="pi pi-trash"
-                                             update="@form"
-                                             process="@this"
-                                             onclick="if (!confirm('Confirma a exclusão'))
-                                                         return false"/>
+                            <p:commandButton actionListener="#{controleDisciplina.excluir(obj.id)}" icon="pi pi-trash"
+                                             update="@form" rendered="#{p:ifGranted('EXCLUSAO')}" process="@this" onclick="if (!confirm('Confirma a exclusão'))
+                                                         return false" />
                             <p:commandButton title="Imprimir"
-                                 action="#{controleDisciplina.imprimeDisciplina(obj.id)}"
-                                 icon="pi pi-print"
-                                 ajax="false"
-                                 onclick="this.form.target = '_blank';"/>
+                                             action="#{controleDisciplina.imprimeDisciplina(obj.id)}"
+                                             icon="pi pi-print"
+                                             ajax="false"
+                                             onclick="this.form.target = '_blank';"/>
                         </div>
                     </p:column>
                 </p:dataTable>

@@ -13,7 +13,7 @@
         <h:form id="formMenu" prependId="false">
             <p:megaMenu>
                 <p:menuitem value="Inicio" url="#{facesContext.externalContext.requestContextPath}/index.xhtml" icon="pi pi-home"/>
-                <p:submenu label="Cadastro">
+                <p:submenu label="Cadastro" rendered="#{controleLogin.usuarioAutenticado != null}">
                     <p:column>
                         <p:submenu label="Basicos">
                             <p:menuitem action="#{controleEspecialidade.listar()}" value="Manutencao de Especialidade" ajax="false"/>
@@ -22,6 +22,7 @@
                         </p:submenu>
                         <p:submenu label="Cursos">
                             <p:menuitem action="#{controleDisciplina.listar()}" value="Manutencao de Disciplina" ajax="false"/>
+                            <p:menuitem action="#{controleCurso.listar()}" value="Manutencao de Curso" ajax="false"/>
                             <p:menuitem action="#{controleInstituicao.listar()}" value="Manutencao de Instituicao" ajax="false"/>
                         </p:submenu>
                     </p:column>
@@ -35,10 +36,19 @@
                         </p:submenu>
                     </p:column>
                 </p:submenu>
+                 <p:submenu label="Usuário: #{controleLogin.usuarioAutenticado != null ? controleLogin.usuarioAutenticado.nome : ''}">
+                    <p:column>
+                        <p:submenu label="Efetuar login" rendered="#{controleLogin.usuarioAutenticado == null}">
+                            <p:menuitem action="#{controleLogin.irPaginaLogin()}" value="Login" icon="pi pi-user" ajax="false"/>
+                        </p:submenu>
+                        <p:submenu label="Efetuar Logout" rendered="#{controleLogin.usuarioAutenticado != null}">
+                            <p:menuitem action="#{controleLogin.logout()}" value="Logout" icon="pi pi-power-off" ajax="false"/>
+                        </p:submenu>                        
+                    </p:column>
+                </p:submenu>     
             </p:megaMenu>
         </h:form>
         <ui:insert name="conteudo">
-
         </ui:insert>
         <ui:include src="ajaxstatus.xhtml"/>
     </h:body>

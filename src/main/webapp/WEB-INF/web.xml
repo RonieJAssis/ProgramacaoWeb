@@ -25,4 +25,57 @@
     <welcome-file-list>
         <welcome-file>index.xhtml</welcome-file>
     </welcome-file-list>
+    <security-constraint>
+        <display-name>segprivado</display-name>
+        <web-resource-collection>
+            <web-resource-name>privado</web-resource-name>
+            <url-pattern>/privado/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>PUT</http-method>
+            <http-method>DELETE</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>INSERCAO</role-name>
+            <role-name>ALTERACAO</role-name>
+            <role-name>EXCLUSAO</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    <security-constraint>
+        <display-name>https</display-name>
+        <web-resource-collection>
+            <web-resource-name>https</web-resource-name>
+            <url-pattern>/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>PUT</http-method>
+            <http-method>DELETE</http-method>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>Escola-Realm</realm-name>
+        <form-login-config>
+            <form-login-page>/login.xhtml</form-login-page>
+            <form-error-page>/loginerror.xhtml</form-error-page>
+        </form-login-config>
+    </login-config>
+    <security-role>
+        <description>insercao</description>
+        <role-name>INSERCAO</role-name>
+    </security-role>
+    <security-role>
+        <description>alteracao</description>
+        <role-name>ALTERACAO</role-name>
+    </security-role>
+    <security-role>
+        <description>exclusao</description>
+        <role-name>EXCLUSAO</role-name>
+    </security-role>
 </web-app>
