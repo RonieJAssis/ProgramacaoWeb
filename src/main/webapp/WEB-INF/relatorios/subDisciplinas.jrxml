@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subDisciplinas" pageWidth="500" pageHeight="842" columnWidth="500" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="7ed02cec-b1c6-44cf-80a4-cdf7037cda17">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="nome" class="java.lang.String">
+		<fieldDescription><![CDATA[nome]]></fieldDescription>
+	</field>
+	<field name="cargaHoraria" class="java.lang.Double">
+		<fieldDescription><![CDATA[cargaHoraria]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<rectangle>
+				<reportElement positionType="Float" stretchType="ElementGroupHeight" x="0" y="0" width="500" height="30" uuid="065d2049-c02c-420e-8d38-2f5ec0e6ce07"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="70" y="0" width="220" height="30" uuid="9ee37d7c-4816-4a0f-ae18-a2929219fd0b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="306bb4b4-e18c-4301-921b-2ea0aced0987"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="0" width="100" height="30" uuid="a6ef9140-4a26-4729-8730-b3b921feeca6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b8c5983f-6e91-4855-864f-42ab9e9c6e0f"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Carga Horaria]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<rectangle>
+				<reportElement positionType="Float" stretchType="ContainerHeight" x="0" y="0" width="500" height="30" uuid="0b811f43-adb2-4e86-b719-8ba37c629242"/>
+			</rectangle>
+			<textField>
+				<reportElement x="70" y="0" width="220" height="30" uuid="4b086924-4800-4832-8ee7-e3fbb23ac39e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="306bb4b4-e18c-4301-921b-2ea0aced0987"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="0" width="100" height="30" uuid="1a5777f1-304f-400d-94a9-5e51433d93b2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b8c5983f-6e91-4855-864f-42ab9e9c6e0f"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{cargaHoraria}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

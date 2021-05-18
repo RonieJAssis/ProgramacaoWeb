@@ -8,6 +8,7 @@ package br.edu.ifsul.dao;
 import br.edu.ifsul.converter.ConverterOrdem;
 import br.edu.ifsul.modelo.Aluno;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.Stateful;
 
 /**
@@ -24,5 +25,11 @@ public class AlunoDAO<TIPO> extends DAOGenerico<Aluno> implements Serializable{
         ordemAtual= listaOrdem.get(1);
         converterOrdem = new ConverterOrdem();
         converterOrdem.setListaOrderm(listaOrdem);
+    }
+    public List<Aluno> getListaObjetosCompleta() {
+        String jpql = "select distinct a from Aluno a order by a.id";
+        List<Aluno> lista = em.createQuery(jpql).getResultList();
+        System.out.println(lista.size());
+        return lista;
     }
 }

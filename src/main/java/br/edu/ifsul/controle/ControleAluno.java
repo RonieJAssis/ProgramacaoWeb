@@ -8,7 +8,11 @@ package br.edu.ifsul.controle;
 import br.edu.ifsul.dao.AlunoDAO;
 import br.edu.ifsul.modelo.Aluno;
 import br.edu.ifsul.util.Util;
+import br.edu.ifsul.util.UtilRelatorios;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -26,6 +30,24 @@ public class ControleAluno implements Serializable{
     
     public ControleAluno(){
         
+    }
+    
+    public void imprimeAlunos(){
+        HashMap parametros = new HashMap();
+        UtilRelatorios.imprimeRelatorio("relatorioAlunos", parametros, dao.getListaObjetosCompleta());
+    }
+    
+    public void imprimeAluno(Object id) {
+        try {
+            objeto = dao.getObjectByID(id);
+            List<Aluno> lista = new ArrayList<>();
+            lista.add(objeto);
+            HashMap parametros = new HashMap();
+            UtilRelatorios.imprimeRelatorio("relatorioAlunos", parametros, lista);
+            
+        } catch (Exception e) {
+            Util.mensagemInformacao("Erro ao recuperar objeto: " + Util.getMensagemErro(e));
+        }
     }
     
     public String listar(){

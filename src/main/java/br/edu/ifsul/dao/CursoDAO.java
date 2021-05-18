@@ -8,6 +8,7 @@ package br.edu.ifsul.dao;
 import br.edu.ifsul.converter.ConverterOrdem;
 import br.edu.ifsul.modelo.Curso;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.Stateful;
 
 /**
@@ -32,5 +33,10 @@ public class CursoDAO<TIPO> extends DAOGenerico<Curso> implements Serializable{
         obj.getDisciplinas().size();
         
         return obj;
+    }public List<Curso> getListaObjetosCompleta(){
+        String jpql = "select distinct c from Curso c left join fetch c.disciplinas order by c.id";
+        List<Curso> lista = em.createQuery(jpql).getResultList();
+        System.out.println(lista.size());
+        return lista;
     }
 }
