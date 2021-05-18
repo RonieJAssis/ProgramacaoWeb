@@ -10,7 +10,11 @@ import br.edu.ifsul.dao.ProfessorDAO;
 import br.edu.ifsul.modelo.Especialidade;
 import br.edu.ifsul.modelo.Professor;
 import br.edu.ifsul.util.Util;
+import br.edu.ifsul.util.UtilRelatorios;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -30,6 +34,24 @@ public class ControleProfessor implements Serializable{
     
     public ControleProfessor(){
         
+    }
+    
+    public void imprimeProfessores(){
+        HashMap parametros = new HashMap();
+        UtilRelatorios.imprimeRelatorio("relatorioProfessores", parametros, dao.getListaObjetosCompleta());
+    }
+    
+    public void imprimeProfessor(Object id) {
+        try {
+            objeto = dao.getObjectByID(id);
+            List<Professor> lista = new ArrayList<>();
+            lista.add(objeto);
+            HashMap parametros = new HashMap();
+            UtilRelatorios.imprimeRelatorio("relatorioProfessores", parametros, lista);
+            
+        } catch (Exception e) {
+            Util.mensagemInformacao("Erro ao recuperar objeto: " + Util.getMensagemErro(e));
+        }
     }
     
     public String listar(){

@@ -36,7 +36,7 @@ public class DisciplinaDAO<TIPO> extends DAOGenerico<Disciplina> implements Seri
     }   
     
     public List<Disciplina> getListaObjetosCompleta(){
-        String jpql = "select distinct d from Disciplina d join fetch d.notas order by d.id";
+        String jpql = "select distinct d from Disciplina d left join fetch d.notas left join fetch d.alunos order by d.id";
         List<Disciplina> lista = em.createQuery(jpql).getResultList();
         System.out.println(lista.size());
         return lista;

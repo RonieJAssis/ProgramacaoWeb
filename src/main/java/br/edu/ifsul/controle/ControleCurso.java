@@ -14,7 +14,11 @@ import br.edu.ifsul.modelo.Curso;
 import br.edu.ifsul.modelo.Disciplina;
 import br.edu.ifsul.modelo.Nota;
 import br.edu.ifsul.util.Util;
+import br.edu.ifsul.util.UtilRelatorios;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -34,10 +38,29 @@ public class ControleCurso implements Serializable {
     private InstituicaoDAO<Instituicao> daoInstituicao;
     private Disciplina disciplina;
     private boolean novadisciplina;
+    
     public ControleCurso() {
 
     }
 
+    public void imprimeCursos(){
+        HashMap parametros = new HashMap();
+        UtilRelatorios.imprimeRelatorio("relatorioCursos", parametros, dao.getListaObjetosCompleta());
+    }
+    
+    public void imprimeCurso(Object id) {
+        try {
+            objeto = dao.getObjectByID(id);
+            List<Curso> lista = new ArrayList<>();
+            lista.add(objeto);
+            HashMap parametros = new HashMap();
+            UtilRelatorios.imprimeRelatorio("relatorioCursos", parametros, lista);
+            
+        } catch (Exception e) {
+            Util.mensagemInformacao("Erro ao recuperar objeto: " + Util.getMensagemErro(e));
+        }
+    }
+    
     public void novaDisciplina() {
         setDisciplina(new Disciplina());
         setNovadisciplina(true);

@@ -8,6 +8,7 @@ package br.edu.ifsul.dao;
 import br.edu.ifsul.converter.ConverterOrdem;
 import br.edu.ifsul.modelo.Instituicao;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.Stateful;
 
 /**
@@ -24,5 +25,11 @@ public class InstituicaoDAO<TIPO> extends DAOGenerico<Instituicao> implements Se
         ordemAtual= listaOrdem.get(1);
         converterOrdem = new ConverterOrdem();
         converterOrdem.setListaOrderm(listaOrdem);  
+    }
+    public List<Instituicao> getListaObjetosCompleta() {
+        String jpql = "select distinct i from Instituicao i order by i.id";
+        List<Instituicao> lista = em.createQuery(jpql).getResultList();
+        System.out.println(lista.size());
+        return lista;
     }
 }

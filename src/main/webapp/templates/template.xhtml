@@ -20,19 +20,27 @@
                             <p:menuitem action="#{controleAluno.listar()}" value="Manutencao de Aluno" ajax="false"/>
                             <p:menuitem action="#{controleProfessor.listar()}" value="Manutencao de Professor" ajax="false"/>                    
                         </p:submenu>
-                        <p:submenu label="Cursos">
+                        <p:submenu label="Institucionais">
                             <p:menuitem action="#{controleDisciplina.listar()}" value="Manutencao de Disciplina" ajax="false"/>
                             <p:menuitem action="#{controleCurso.listar()}" value="Manutencao de Curso" ajax="false"/>
                             <p:menuitem action="#{controleInstituicao.listar()}" value="Manutencao de Instituicao" ajax="false"/>
+                        </p:submenu>
+                         <p:submenu label="Interno">
+                             <p:menuitem action="#{controleUsuario.listar()}" value="Manutencao de Usuario" ajax="false"/>
                         </p:submenu>
                     </p:column>
                 </p:submenu>
                 <p:submenu label="Relatórios">
                     <p:column>
-                        <p:submenu label="Basicos">           
+                        <p:submenu label="Basicos">
+                            <p:menuitem action="#{controleEspecialidade.imprimeEspecialidades()}" value="Imprimir Especialdiades" ajax="false" target = "_blank"/>
+                            <p:menuitem action="#{controleAluno.imprimeAlunos()}" value="Imprimir Alunos" ajax="false" target = "_blank"/>
+                            <p:menuitem action="#{controleProfessor.imprimeProfessores()}" value="Imprimir Professores" ajax="false" target = "_blank"/>
                         </p:submenu>
-                        <p:submenu label="Cursos">
-                            <p:menuitem action="#{controleDisciplina.imprimeDisciplinas()}" value="Imprimir Disciplinas" ajax="false" target = "_blank"/>              
+                        <p:submenu label="Institucionais">
+                            <p:menuitem action="#{controleDisciplina.imprimeDisciplinas()}" value="Imprimir Disciplinas" ajax="false" target = "_blank"/>
+                            <p:menuitem action="#{controleCurso.imprimeCursos()}" value="Imprimir Cursos" ajax="false" target = "_blank"/>
+                            <p:menuitem action="#{controleInstituicao.imprimeInstituicoes()}" value="Imprimir Instituicoes" ajax="false" target = "_blank"/>
                         </p:submenu>
                     </p:column>
                 </p:submenu>

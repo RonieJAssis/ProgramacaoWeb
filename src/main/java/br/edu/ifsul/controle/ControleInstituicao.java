@@ -8,7 +8,11 @@ package br.edu.ifsul.controle;
 import br.edu.ifsul.dao.InstituicaoDAO;
 import br.edu.ifsul.modelo.Instituicao;
 import br.edu.ifsul.util.Util;
+import br.edu.ifsul.util.UtilRelatorios;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -26,6 +30,24 @@ public class ControleInstituicao implements Serializable{
     
     public ControleInstituicao(){
         
+    }
+    
+    public void imprimeInstituicoes(){
+        HashMap parametros = new HashMap();
+        UtilRelatorios.imprimeRelatorio("relatorioInstituicoes", parametros, dao.getListaObjetosCompleta());
+    }
+    
+    public void imprimeInstituicao(Object id) {
+        try {
+            objeto = dao.getObjectByID(id);
+            List<Instituicao> lista = new ArrayList<>();
+            lista.add(objeto);
+            HashMap parametros = new HashMap();
+            UtilRelatorios.imprimeRelatorio("relatorioInstituicoes", parametros, lista);
+            
+        } catch (Exception e) {
+            Util.mensagemInformacao("Erro ao recuperar objeto: " + Util.getMensagemErro(e));
+        }
     }
     
     public String listar(){

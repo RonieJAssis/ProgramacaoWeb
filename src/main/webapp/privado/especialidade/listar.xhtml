@@ -17,6 +17,11 @@
                                  process="@this"
                                  rendered="#{p:ifGranted('INSERCAO')}"
                                  oncomplete="PF('dlg').show();"/>
+                 <p:commandButton value="Imprimir"
+                                  action="#{controleEspecialidade.imprimeEspecialidades()}"
+                                 icon="pi pi-print"
+                                 ajax="false"
+                                 onclick="this.form.target = '_blank';"/>
                 <div align="center">
                     <p:panelGrid columns="11">
                         <p:outputLabel value="Ordem:"/>
@@ -71,6 +76,11 @@
                                              rendered="#{p:ifGranted('EXCLUSAO')}"
                                              onclick="if (!confirm('Confirma a exclusão'))
                                                          return false"/>
+                            <p:commandButton title="Imprimir"
+                                             action="#{controleEspecialidade.imprimeEspecialidade(obj.id)}"
+                                             icon="pi pi-print"
+                                             ajax="false"
+                                             onclick="this.form.target = '_blank';"/>
                         </div>
                     </p:column>
                 </p:dataTable>

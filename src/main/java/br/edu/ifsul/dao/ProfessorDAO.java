@@ -8,6 +8,7 @@ package br.edu.ifsul.dao;
 import br.edu.ifsul.converter.ConverterOrdem;
 import br.edu.ifsul.modelo.Professor;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.Stateful;
 
 /**
@@ -24,5 +25,11 @@ public class ProfessorDAO<TIPO> extends DAOGenerico<Professor> implements Serial
         ordemAtual= listaOrdem.get(1);
         converterOrdem = new ConverterOrdem();
         converterOrdem.setListaOrderm(listaOrdem);
+    }
+    public List<Professor> getListaObjetosCompleta() {
+        String jpql = "select distinct p from Professor p order by p.id";
+        List<Professor> lista = em.createQuery(jpql).getResultList();
+        System.out.println(lista.size());
+        return lista;
     }
 }
